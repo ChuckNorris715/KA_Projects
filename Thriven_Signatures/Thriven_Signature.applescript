@@ -1,11 +1,11 @@
 ###################################################################################################
 ##	This AppleScript is for generating Mail Signature Templates in Microsoft Outlook for Mac	 ##
 ##	Prepared by Stuart Lamont in November 2015 to replace the Centenary Signatures				 ##
-##																								 ##
-##	The script performs numerous Active Directory Lookups and will produce inconsistent			 ##
-##	results if the Active Directory binding is in any way compromised.							 ##
-##	If Surname, Title and Phone Number aren't on the Generated Template, unbind and re-bind		 ##
-##	the computer with Active Directory and the re-run the script.								 ##
+##  																							 ##
+##	Modified to use Enterprise Connect to preform numerous Active Directory Lookups 			 ##
+##  and will produce inconsistent results if the Active Directory binding is in 				 ##
+##  any way compromised. If Surname, Title and Phone Number aren't on the Generated 			 ##
+##  Template, the computer with Active Directory and the re-run the script.						 ##
 ##																								 ##
 ##	If the Script is run more than once, multiple Templates will be generated, so please		 ##
 ##	bear this in mind when selecting the default templates for the user.						 ##
@@ -20,7 +20,7 @@ global userName
 global rawsurname
 global firstname
 global surname
-global nametitle
+global credentials
 global email
 global jobTitle
 global phoneNo
@@ -63,17 +63,17 @@ end tell
 set rawsurname to text 1 thru ((offset of "," in longName) - 1) of longName
 #pull first name from System LongName
 set firstname to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a givenName | awk 'BEGIN {FS=\": \"} {print $2}'")
-#Pull Surname from AD Extension Attribute 1
+#Pull Surname from AD Attribute surname 
 set surname to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a sn | awk 'BEGIN {FS=\": \"} {print $2}'")
-#pull pull "Title" (Dr/Rev/etc) from AD Extension Attribute 3
-set nametitle to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a description | awk 'BEGIN {FS=\": \"} {print $2}'")
-#pull email address from AD Extension Attribute 2
+#pull pull "credentials" (LEED/RA/AP) from AD Attribute description 
+set credentials to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a description | awk 'BEGIN {FS=\": \"} {print $2}'")
+#pull email address from AD Attribute mail
 set email to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a mail | awk 'BEGIN {FS=\": \"} {print $2}'")
-#pull job title from AD Attribute JobTitle
+#pull job title from AD Attribute title
 set jobTitle to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a title | awk 'BEGIN {FS=\": \"} {print $2}'")
-#pull telephone Extension number from AD Attribute ipPhone
+#pull telephone Extension number from AD Attribute telephoneNumber (i.e. extention)
 set phoneNo to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a telephoneNumber | awk 'BEGIN {FS=\": \"} {print $2}'")
-#pull direct telephone from AD Attribute ipPhone
+#pull direct telephone from AD Attribute ipPhone (i.e. direct number)
 set directPhone to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a ipPhone | awk 'BEGIN {FS=\": \"} {print $2}'")
 
 #####################################################
@@ -82,9 +82,9 @@ set address1 to "756 Haddon Ave. Collingswood, NJ 08108"
 
 
 #####################################################
-#Setup Font Colours
+#Setup to add a credentials line
 set descript1 to "<tr>
-                 <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:11px;line-height:15px;color:#231f20; font-weight:600;padding-top:6px;\"> " & nametitle & "</td>
+                 <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:11px;line-height:15px;color:#231f20; font-weight:600;padding-top:6px;\"> " & credentials & "</td>
                </tr>"
 set descript2 to ""
 
@@ -124,7 +124,7 @@ set descript2 to ""
 #set question to display dialog "Which Campus are you based at?" buttons {location1Name, location2Name} default button location1Name
 #set campus to button returned of question
 #Ridgeway Template
-if nametitle is equal to "" then
+if credentials is equal to "" then
 	
 	set descriptMain to descript2
 	setupSignature()
@@ -139,7 +139,7 @@ end if
 
 on setupSignature()
 	tell application id "com.microsoft.Outlook"
-		make new signature with properties {name:"NEW_DOMAIN_WO_Descript", content:"<html>
+		make new signature with properties {name:"Thriven_Signature", content:"<html>
 <body class=\"qe_body\" style=\"padding:0; margin:0 auto !important; display:block !important; min-width:100% !important; width:100% !important; background:#ffffff; -webkit-text-size-adjust:none\">
 <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\"  class=\"full-wrap\">
   <tr>
@@ -167,10 +167,10 @@ on setupSignature()
                       <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:9px;line-height:13px;color:#000000;\"><a href=\"mailto:" & email & "\" style=\"text-decoration:none;color:#000000;\">" & email & "</a></td>
                     </tr>
                     <tr>
-                      <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:9px;line-height:13px;color:#000000;padding-top:5px; \"><strong>T: </strong><a href=\"tel:" & phoneNo & "\" style=\"text-decoration:none;color:#000000;\">" & phoneNo & "</a>&nbsp;|&nbsp;<strong>D: </strong><a href=\"tel:" & directPhone & "\" style=\"text-decoration:none;color:#000000;\">" & directPhone & "</a></td>
+                      <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:9px;line-height:13px;color:#000000;padding-top:5px; \"><strong>t: </strong><a href=\"tel:" & phoneNo & "\" style=\"text-decoration:none;color:#000000;\">" & phoneNo & "</a>&nbsp;|&nbsp;<strong>d: </strong><a href=\"tel:" & directPhone & "\" style=\"text-decoration:none;color:#000000;\">" & directPhone & "</a></td>
                     </tr>
                     <tr>
-                      <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:9px;line-height:13px;color:#000000; padding-top:5px;\">756 Haddon Ave. Collingswood, NJ 08108</td>
+                      <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:9px;line-height:13px;color:#000000; padding-top:5px;\">" & address1 & "</td>
                     </tr>
                     <tr>
                       <td valign=\"top\" align=\"center\" style=\"padding-top:6px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\">
@@ -230,7 +230,7 @@ on updateDefaultSig to mySignature for accountName
 				tell group 2
 					---click pop up button 2
 					set Preset to get value of pop up button 2
-					if Preset is equal to "2016 TRC Signature" then
+					if Preset is equal to "Thriven_Signature" then
 						
 					else
 						if Preset is equal to "None" then
@@ -252,7 +252,7 @@ on updateDefaultSig to mySignature for accountName
 						end if
 					end if
 					set Preset to get value of pop up button 1
-					if Preset is equal to "2016 TRC Signature" then
+					if Preset is equal to "Thriven_Signature" then
 						
 					else
 						if Preset is equal to "None" then
