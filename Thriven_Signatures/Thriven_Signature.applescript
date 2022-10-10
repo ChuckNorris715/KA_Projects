@@ -95,18 +95,18 @@ set descript2 to ""
 
 #####################################################
 #setup graphical Assets
-set logoLink to "http://media.igs.vic.edu.au/signatures/IvanhoeLineBig2.png"
-set webURL to "http://www.ivanhoe.com.au"
-set webURLText to "www.ivanhoe.com.au"
-set twitterLink to "http://twitter.com/ivanhoegrammar"
-set twitterLogoLink to "http://media.igs.vic.edu.au/signatures/twittersml.png"
-set facebookLink to "http://www.facebook.com/IvanhoeGrammarSchool"
-set facebookLogoLink to "http://media.igs.vic.edu.au/signatures/facebooksml.png"
-set linkedInLink to "https://www.linkedin.com/company/ivanhoe-grammar-school"
-set linkedInLogoLink to "http://media.igs.vic.edu.au/signatures/linkedinsml.png"
-set instaLink to "https://www.instagram.com/ivanhoegrammarschool/"
-set instaLogoLink to "http://media.igs.vic.edu.au/signatures/instagramsml.png"
-set bottomBorderImage to "http://media.igs.vic.edu.au/general/signatures/bottomborder.jpg"
+#set logoLink to "http://media.igs.vic.edu.au/signatures/IvanhoeLineBig2.png"
+#set webURL to "http://www.ivanhoe.com.au"
+#set webURLText to "www.ivanhoe.com.au"
+#set twitterLink to "http://twitter.com/ivanhoegrammar"
+#set twitterLogoLink to "http://media.igs.vic.edu.au/signatures/twittersml.png"
+#set facebookLink to "http://www.facebook.com/IvanhoeGrammarSchool"
+#set facebookLogoLink to "http://media.igs.vic.edu.au/signatures/facebooksml.png"
+#set linkedInLink to "https://www.linkedin.com/company/ivanhoe-grammar-school"
+#set linkedInLogoLink to "http://media.igs.vic.edu.au/signatures/linkedinsml.png"
+#set instaLink to "https://www.instagram.com/ivanhoegrammarschool/"
+#set instaLogoLink to "http://media.igs.vic.edu.au/signatures/instagramsml.png"
+#set bottomBorderImage to "http://media.igs.vic.edu.au/general/signatures/bottomborder.jpg"
 
 #Error Checking
 #check for field data complete - If surname is Blank, quit, and prompt user to come to IT Services
