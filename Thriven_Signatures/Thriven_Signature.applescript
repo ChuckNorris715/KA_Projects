@@ -60,7 +60,7 @@ end tell
 
 #pull Surname from System LongName
 #not used
-set rawsurname to text 1 thru ((offset of "," in longName) - 1) of longName
+set rawsurname to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a sAMAccountName | awk 'BEGIN {FS=\": \"} {print $2}'")
 #pull first name from System LongName
 set firstname to do shell script ("\"/Applications/Enterprise Connect.app/Contents/SharedSupport/eccl\" -a givenName | awk 'BEGIN {FS=\": \"} {print $2}'")
 #Pull Surname from AD Attribute surname 
@@ -164,7 +164,7 @@ on setupSignature()
                         </table></td>
                     </tr>
                     <tr>
-                      <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:9px;line-height:13px;color:#000000;\"><a href=\"mailto:" & email & "\" style=\"text-decoration:none;color:#000000;\">" & email & "</a></td>
+                      <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:9px;line-height:13px;color:#000000;\"><a href=\"mailto:" & rawsurname & "@thriven.design\" style=\"text-decoration:none;color:#000000;\">" & rawsurname & "@thriven.design</a></td>
                     </tr>
                     <tr>
                       <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:9px;line-height:13px;color:#000000;padding-top:5px; \"><strong>t: </strong><a href=\"tel:" & phoneNo & "\" style=\"text-decoration:none;color:#000000;\">" & phoneNo & "</a>&nbsp;|&nbsp;<strong>d: </strong><a href=\"tel:" & directPhone & "\" style=\"text-decoration:none;color:#000000;\">" & directPhone & "</a></td>
