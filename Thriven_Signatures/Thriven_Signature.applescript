@@ -95,17 +95,15 @@ set descript2 to ""
 
 #####################################################
 #setup graphical Assets
-#set logoLink to "http://media.igs.vic.edu.au/signatures/IvanhoeLineBig2.png"
-#set webURL to "http://www.ivanhoe.com.au"
-#set webURLText to "www.ivanhoe.com.au"
-#set twitterLink to "http://twitter.com/ivanhoegrammar"
-#set twitterLogoLink to "http://media.igs.vic.edu.au/signatures/twittersml.png"
-#set facebookLink to "http://www.facebook.com/IvanhoeGrammarSchool"
-#set facebookLogoLink to "http://media.igs.vic.edu.au/signatures/facebooksml.png"
-#set linkedInLink to "https://www.linkedin.com/company/ivanhoe-grammar-school"
-#set linkedInLogoLink to "http://media.igs.vic.edu.au/signatures/linkedinsml.png"
-#set instaLink to "https://www.instagram.com/ivanhoegrammarschool/"
-#set instaLogoLink to "http://media.igs.vic.edu.au/signatures/instagramsml.png"
+set logoLink to "http://zerozone.com/qeinbox/signatures/logo_updated.png"
+set webURL to "https://www.thriven.design/"
+set webURLText to "thriven.design"
+set facebookLink to "https://www.facebook.com/thriven.design/"
+set facebookLogoLink to "http://zerozone.com/qeinbox/signatures/facebook.png"
+set linkedInLink to "https://www.linkedin.com/company/thrivendesign"
+set linkedInLogoLink to "http://zerozone.com/qeinbox/signatures/linkedin.png"
+set instaLink to "https://www.instagram.com/thriven.design/"
+set instaLogoLink to "http://zerozone.com/qeinbox/signatures/insta.png"
 #set bottomBorderImage to "http://media.igs.vic.edu.au/general/signatures/bottomborder.jpg"
 
 #Error Checking
@@ -143,11 +141,11 @@ on setupSignature()
 <body class=\"qe_body\" style=\"padding:0; margin:0 auto !important; display:block !important; min-width:100% !important; width:100% !important; background:#ffffff; -webkit-text-size-adjust:none\">
 <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\"  class=\"full-wrap\">
   <tr>
-    <td align=\"center\" valign=\"top\"><table align=\"left\" style=\"width:320px; max-width:320px; table-layout:fixed;\" class=\"qe_wrapper\"  width=\"320\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+    <td align=\"center\" valign=\"top\"><table align=\"left\" style=\"width:325px; max-width:325px; table-layout:fixed;\" class=\"qe_wrapper\"  width=\"325\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
         <tr>
           <td valign=\"top\" align=\"center\" style=\"padding:20px 6px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\">
               <tr>
-                <td valign=\"middle\" align=\"left\" width=\"104\" style=\"width:104px;padding-top:4px;\"><a href=\"https://www.thriven.design/\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\"http://zerozone.com/qeinbox/signatures/logo_updated.png\" width=\"104\" alt=\"thriven design\" border=\"0\" style=\"font-family:Arial, sans-serif; font-size:14px; line-height:17px;color:#000000;display:block;max-width:104px;\"/></a></td>
+                <td valign=\"middle\" align=\"left\" width=\"104\" style=\"width:104px;padding-top:4px;\"><a href=\"" & webURL & "\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\""& logoLink &"\" width=\"104\" alt=\"thriven design\" border=\"0\" style=\"font-family:Arial, sans-serif; font-size:14px; line-height:17px;color:#000000;display:block;max-width:104px;\"/></a></td>
                 <td valign=\"middle\" align=\"center\" style=\"padding-left:15px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
                     <tr>
                       <td valign=\"top\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:16px;line-height:20px;color:#231f20; font-weight:bold;\">" & firstname & "&nbsp;" & surname & "</td>
@@ -175,13 +173,13 @@ on setupSignature()
                     <tr>
                       <td valign=\"top\" align=\"center\" style=\"padding-top:6px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\">
                           <tr>
-                            <td valign=\"top\" align=\"left\" width=\"26\" style=\"width:26px; line-height:0px; font-size:0px;\"><a href=\"https://www.linkedin.com/company/thriven.design\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\"http://zerozone.com/qeinbox/signatures/linkedin.png\" width=\"22\"  border=\"0\" style=\"font-family:Arial, sans-serif; font-size:14px; line-height:17px;color:#000000;display:block;max-width:22px;\"/></a></td>
+                            <td valign=\"top\" align=\"left\" width=\"26\" style=\"width:26px; line-height:0px; font-size:0px;\"><a href=\"" & linkedInLink & "\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\"" & linkedInLogoLink & "\" width=\"22\"  border=\"0\" style=\"font-family:Arial, sans-serif; font-size:14px; line-height:17px;color:#000000;display:block;max-width:22px;\"/></a></td>
                             <td width=\"5\" style=\"width:5px;line-height:0px;font-size:0px;\"></td>
-                            <td valign=\"top\" align=\"left\" width=\"27\" style=\"width:27px; line-height:0px; font-size:0px;\"><a href=\"https://www.instagram.com/thriven.design/\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\"http://zerozone.com/qeinbox/signatures/insta.png\" width=\"22\"  border=\"0\" style=\"font-family:Arial, sans-serif; font-size:14px; line-height:17px;color:#000000;display:block;max-width:22px;\"/></a></td>
+                            <td valign=\"top\" align=\"left\" width=\"27\" style=\"width:27px; line-height:0px; font-size:0px;\"><a href=\"" & instaLink & "\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\"" & instaLogoLink & "\" width=\"22\"  border=\"0\" style=\"font-family:Arial, sans-serif; font-size:14px; line-height:17px;color:#000000;display:block;max-width:22px;\"/></a></td>
                             <td width=\"5\" style=\"width:5px;line-height:0px;font-size:0px;\"></td>
-                            <td valign=\"top\" align=\"left\" width=\"27\" style=\"width:27px; line-height:0px; font-size:0px;\"><a href=\"https://www.facebook.com/thriven.design/\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\"http://zerozone.com/qeinbox/signatures/facebook.png\" width=\"22\"  border=\"0\" style=\"font-family:Arial, sans-serif; font-size:14px; line-height:17px;color:#000000;display:block;max-width:22px;\"/></a></td>
+                            <td valign=\"top\" align=\"left\" width=\"27\" style=\"width:27px; line-height:0px; font-size:0px;\"><a href=\"" & facebookLink & "\" target=\"_blank\" style=\"text-decoration:none;\"><img src=\"" & facebookLogoLink & "\" width=\"22\"  border=\"0\" style=\"font-family:Arial, sans-serif; font-size:14px; line-height:17px;color:#000000;display:block;max-width:22px;\"/></a></td>
                             <td width=\"10\" style=\"width:10px;\"></td>
-                            <td valign=\"middle\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:10px;line-height:13px;color:#000000;font-weight:600; \"><a href=\"https://www.thriven.design/\" target=\"_blank\" style=\"text-decoration:none;color:#000000;\">thriven.design</a></td>
+                            <td valign=\"middle\" align=\"left\" class=\"qe_defaultlink\" style=\"font-family: 'Montserrat', Arial, sans-serif;font-size:10px;line-height:13px;color:#000000;font-weight:600; \"><a href=\"" & webURL & "\" target=\"_blank\" style=\"text-decoration:none;color:#000000;\">" & webURLText & "</a></td>
                           </tr>
                         </table></td>
                     </tr>
